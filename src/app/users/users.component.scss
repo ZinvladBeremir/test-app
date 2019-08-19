@@ -1,0 +1,8 @@
+.card {
+  width: calc(100% / 4 - 1rem);
+  margin: .5rem;
+  &:hover {
+    box-shadow: 0 0 15px -7px grey;
+    cursor: pointer;
+  }
+}

@@ -1,1 +1,57 @@
-<p>user works!</p>
+<div class="d-flex flex-wrap justify-content-around" *ngIf="user">
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title mb-4">{{ user.name }} / <span class="text-muted font-italic">{{ user.id }}</span></h5>
+      <p class="card-text mb-2">
+        <span class="text-monospace">User website: </span>
+        <span class="text-muted font-italic">{{ user.website }}</span>
+      </p>
+
+      <ul class="list-group mb-3">
+        <li class="list-group-item py-1 border-0 small">
+          <span class="text-monospace">Company name: </span>
+          <span class="text-muted font-italic">{{ user.company.name }}</span>
+        </li>
+        <li class="list-group-item py-1 border-0 small">
+          <span class="text-monospace">Company catchPhrase: </span>
+          <span class="text-muted font-italic">{{ user.company.catchPhrase }}</span>
+        </li>
+        <li class="list-group-item py-1 border-0 small">
+          <span class="text-monospace">Company bs: </span>
+          <span class="text-muted font-italic">{{ user.company.bs }}</span>
+        </li>
+      </ul>
+
+      <p class="card-text">
+        <span class="text-monospace">Email: </span>
+        <span class="text-muted font-italic">{{ user.email }}</span></p>
+      <p class="card-text">
+        <span class="text-monospace">Phone: </span>
+        <span class="text-muted font-italic">{{ user.phone }}</span></p>
+
+      <ul class="list-group mb-3">
+        <li class="list-group-item py-1 border-0 small">
+          <span class="text-monospace">Address city: </span>
+          <span class="text-muted font-italic">{{ user.address.city }}</span>
+        </li>
+        <li class="list-group-item py-1 border-0 small">
+          <span class="text-monospace">Address street: </span>
+          <span class="text-muted font-italic">{{ user.address.street }}</span>
+        </li>
+        <li class="list-group-item py-1 border-0 small">
+          <span class="text-monospace">Address zipcode: </span>
+          <span class="text-muted font-italic">{{ user.address.zipcode }}</span>
+        </li>
+        <li class="list-group-item py-1 border-0 small">
+          <span class="text-monospace">Address suite: </span>
+          <span class="text-muted font-italic">{{ user.address.suite }}</span>
+        </li>
+        <li class="list-group-item py-1 border-0 small">
+          <span class="text-monospace">Address geo lng / lat: </span>
+          <span class="text-muted font-italic">{{ user.address.geo.lng }} / {{ user.address.geo.lat }}</span>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

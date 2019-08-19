@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Post} from '../interfaces';
-import {HttpService} from '../config/http.service';
+import {HttpService} from '../../config/http.service';
 import {Subscription} from 'rxjs';
+import { Post, PostComments } from '../../config/interfaces';
 
 @Component({
   selector: 'app-post',
@@ -11,7 +11,8 @@ import {Subscription} from 'rxjs';
   providers: [HttpService]
 })
 export class PostComponent implements OnInit {
-  post = {};
+  post: Post;
+  postComments: Array<PostComments>;
   private id: number;
   private subscription: Subscription;
 
@@ -24,7 +25,9 @@ export class PostComponent implements OnInit {
 
   ngOnInit() {
     this.httpService.getOnePost(this.id).subscribe(data => this.post = data);
-    console.log('post =>', this.post);
+    this.httpService.getOnePostComments(this.id).subscribe(data => {
+      this.postComments = data;
+    });
   }
 
 }
