@@ -7,8 +7,7 @@ import {User} from '../../config/interfaces';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss'],
-  providers: [HttpService]
+  styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
   user: User;
@@ -23,7 +22,10 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.httpService.getOneUser(this.id).subscribe((data: User) => this.user =  data);
+    this.httpService.getOneUser(this.id).subscribe((data: User) => {
+      this.user =  data;
+      this.httpService.setSpinnerState(false);
+    });
   }
 
 }

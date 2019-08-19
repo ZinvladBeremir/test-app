@@ -7,8 +7,7 @@ import { Post, PostComments } from '../../config/interfaces';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss'],
-  providers: [HttpService]
+  styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
   post: Post;
@@ -27,6 +26,7 @@ export class PostComponent implements OnInit {
     this.httpService.getOnePost(this.id).subscribe(data => this.post = data);
     this.httpService.getOnePostComments(this.id).subscribe(data => {
       this.postComments = data;
+      this.httpService.setSpinnerState(false);
     });
   }
 

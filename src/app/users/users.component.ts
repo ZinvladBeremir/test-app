@@ -5,8 +5,7 @@ import { HttpService } from '../config/http.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss'],
-  providers: [HttpService]
+  styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
 
@@ -14,7 +13,10 @@ export class UsersComponent implements OnInit {
   constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    this.httpService.getUsers().subscribe(data => this.users = data);
+    this.httpService.getUsers().subscribe(data => {
+      this.users = data;
+      this.httpService.setSpinnerState(false);
+    });
   }
 
 }
