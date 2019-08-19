@@ -41,7 +41,6 @@ export class HttpService {
 
   getUsers(): Observable<User[]> {
     this.setSpinnerState(true);
-    console.log('getUsers', this.getSpinnerState())
     return this.http.get(environment.url + 'users')
       .pipe(map((data: User[]) => {
         const users = data;
