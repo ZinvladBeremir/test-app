@@ -1,5 +1,5 @@
-<div class="d-flex flex-wrap" *ngIf="users">
-  <a class="card mb-3" *ngFor="let user of users">
+<div class="d-flex flex-wrap" *ngIf="users$">
+  <a class="card mb-3" *ngFor="let user of (users$ | async)">
     <div class="card-body" [routerLink]="['/users', user.id]">
       <h5 class="card-title">{{ user.name }} / {{ user.id }}</h5>
       <p class="card-text">{{ user.phone }}</p>

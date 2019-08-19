@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {HttpService} from '../../config/http.service';
-import {Subscription} from 'rxjs';
-import {User} from '../../config/interfaces';
+import {ApiService} from '../../services/api.service';
+import {Observable, Subscription} from 'rxjs';
+import {User} from '../../models/user-interface';
 
 @Component({
   selector: 'app-user',
@@ -10,22 +10,19 @@ import {User} from '../../config/interfaces';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  user: User;
+  user$: Observable<User>;
   private id: number;
   private subscription: Subscription;
 
   constructor(
-    private httpService: HttpService,
+    private httpService: ApiService,
     private activateRoute: ActivatedRoute
   ) {
     this.subscription = activateRoute.params.subscribe(params => this.id = params['id']);
   }
 
   ngOnInit() {
-    this.httpService.getOneUser(this.id).subscribe((data: User) => {
-      this.user =  data;
-      this.httpService.setSpinnerState(false);
-    });
+    this.user$ = this.httpService.getOneUser(this.id);
   }
 
 }

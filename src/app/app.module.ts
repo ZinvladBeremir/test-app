@@ -4,13 +4,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { PostComponent } from './posts/post/post.component';
-import { PostsComponent } from './posts/posts.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { UsersComponent } from './users/users.component';
-import { HomeComponent } from './home/home.component';
-import { UserComponent } from './users/user/user.component';
-import {HttpService} from './config/http.service';
+import { PostComponent } from './components/post/post.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { UsersComponent } from './components/users/users.component';
+import { HomeComponent } from './components/home/home.component';
+import { UserComponent } from './components/user/user.component';
+import {ApiService} from './services/api.service';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavComponent } from './components/nav/nav.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,7 +31,9 @@ const appRoutes: Routes = [
     NotFoundComponent,
     UsersComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    FooterComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,7 @@ const appRoutes: Routes = [
       }
     )
   ],
-  providers: [HttpService],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

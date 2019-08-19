@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {HttpService} from '../../config/http.service';
+import {ApiService} from '../../services/api.service';
 import {Subscription} from 'rxjs';
-import { Post, PostComments } from '../../config/interfaces';
+import {PostComments} from '../../models/post-comments.interface';
+import {Post} from '../../models/post-interface';
 
 @Component({
   selector: 'app-post',
@@ -16,7 +17,7 @@ export class PostComponent implements OnInit {
   private subscription: Subscription;
 
   constructor(
-    private httpService: HttpService,
+    private httpService: ApiService,
     private activateRoute: ActivatedRoute
   ) {
     this.subscription = activateRoute.params.subscribe(params => this.id = params['id']);
@@ -26,7 +27,6 @@ export class PostComponent implements OnInit {
     this.httpService.getOnePost(this.id).subscribe(data => this.post = data);
     this.httpService.getOnePostComments(this.id).subscribe(data => {
       this.postComments = data;
-      this.httpService.setSpinnerState(false);
     });
   }
 

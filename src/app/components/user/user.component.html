@@ -1,8 +1,8 @@
-<div class="d-flex flex-wrap justify-content-around" *ngIf="user">
+<div class="d-flex flex-wrap justify-content-around" *ngIf="(user$ | async) as user">
   <div class="card mb-4">
     <div class="card-body">
       <h5 class="card-title mb-4">{{ user.name }} / <span class="text-muted font-italic">{{ user.id }}</span></h5>
-      <p class="card-text mb-2">
+      <p class="card-text mb-2 small">
         <span class="text-monospace">User website: </span>
         <span class="text-muted font-italic">{{ user.website }}</span>
       </p>
@@ -22,10 +22,10 @@
         </li>
       </ul>
 
-      <p class="card-text">
+      <p class="card-text small">
         <span class="text-monospace">Email: </span>
         <span class="text-muted font-italic">{{ user.email }}</span></p>
-      <p class="card-text">
+      <p class="card-text small">
         <span class="text-monospace">Phone: </span>
         <span class="text-muted font-italic">{{ user.phone }}</span></p>
 

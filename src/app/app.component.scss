@@ -1,15 +1,5 @@
 @import '../assets/styles/variables';
 
-.nav-item {
-  .link {
-
-    &.active {
-      color: $active-link;
-      text-decoration: underline;
-    }
-  }
-}
-
 .pending {
   position: absolute;
   top: 50%;

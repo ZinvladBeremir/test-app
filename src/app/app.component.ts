@@ -1,5 +1,4 @@
-import {Component, OnInit } from '@angular/core';
-import { HttpService } from './config/http.service';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +6,9 @@ import { HttpService } from './config/http.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
-  constructor(private httpService: HttpService) {
+  constructor() {
   }
 
   ngOnInit() {
-  }
-
-  toTop(e) {
-    e.preventDefault();
-    window.scrollTo(0, 0);
   }
 }
